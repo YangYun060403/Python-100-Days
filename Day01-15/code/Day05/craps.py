@@ -18,9 +18,15 @@ while money > 0:
     print('你的总资产为:', money)
     needs_go_on = False
     while True:
-        debt = int(input('请下注: '))
-        if 0 < debt <= money:
-            break
+        try:
+            debt = int(input("请下注："))
+            if 0 < debt < money:
+                break
+            else:
+                print("对不起，你没有那么多的资产！")
+                continue
+        except ValueError as a:
+            print("请重新输入！")
     first = randint(1, 6) + randint(1, 6)
     print('玩家摇出了%d点' % first)
     if first == 7 or first == 11:
